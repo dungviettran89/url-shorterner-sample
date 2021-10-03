@@ -5,13 +5,12 @@ import org.hashids.Hashids;
 import java.net.URL;
 
 @SuppressWarnings("UnstableApiUsage")
-public class UrlShortenerUtils {
+public class LinkUtils {
     private static Hashids hashids = new Hashids();
-    private static long EPOCH = 1633230018096L;
     private static long SEQUENCE = 0L;
 
-    public static String generate() {
-        long hash = System.currentTimeMillis() - EPOCH;
+    public static String generate(String url) {
+        long hash = url.hashCode() & 0x7fffffff;
         long sequence = SEQUENCE++ % 1024;
         long id = hash << 10 | sequence;
         return hashids.encode(id);

@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: "${DATABASE_URL:jdbc:h2:mem:testdb}"
-    username: "${DATABASE_USERNAME:sa}"
-    password: "${DATABASE_PASSWORD:password}"
+    url: "jdbc:mariadb://${DB_HOST}:${DB_PORT}/${DB_NAME}"
+    username: "${DB_USER:urlshortener}"
+    password: "${DB_PASS:urlshortener}"
   jpa:
     hibernate:
       ddl-auto: update
