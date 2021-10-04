@@ -29,7 +29,7 @@ public class LinkController {
         Optional<String> url = linkRepository.findById(id).map(LinkEntity::getUrl);
         if (url.isEmpty()) {
             log.info("GET /{}: NOT_FOUND", id);
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
         } else {
             log.info("GET /{}: redirect to {}", id, url.get());
             response.sendRedirect(url.get());

@@ -1,6 +1,5 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
 import "./App.css";
+import React from "react";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
