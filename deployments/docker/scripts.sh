@@ -51,5 +51,5 @@ sudo docker logs -f url-shortener-backend-node-nestjs
 #We can build Node front end with this
 sudo docker rm -f url-shortener-frontend-react
 sudo docker build -t dungviettran89/url-shortener-frontend-react:latest .
-sudo docker run -d --link url-shortener-backend-java-spring:backend --name url-shortener-frontend-react -p 18888:80  dungviettran89/url-shortener-frontend-react:latest
+sudo docker run -d --link url-shortener-backend-java-spring:backend --name url-shortener-frontend-react -p 80:80  dungviettran89/url-shortener-frontend-react:latest
 sudo docker logs -f url-shortener-frontend-react
