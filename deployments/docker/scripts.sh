@@ -1,6 +1,6 @@
 #Portainer can be used to manage docker
 sudo docker rm -f portainer
-sudo rm -f /data/portainer
+sudo rm -rf /data/portainer
 sudo docker run \
   -d \
   --restart=always \
@@ -13,7 +13,7 @@ sudo docker run \
 
 #MariaDB can be installed easily
 sudo docker rm -f mariadb
-sudo rm -f /data/urlshorterner/mariadb
+sudo rm -rf /data/urlshorterner/mariadb
 sudo docker run \
   -d \
   --restart=always \
