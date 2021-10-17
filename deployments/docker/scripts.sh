@@ -1,7 +1,7 @@
 #Portainer can be used to manage docker
-sudo docker rm -f portainer
-sudo rm -rf /data/portainer
-sudo docker run \
+docker rm -f portainer
+rm -rf /data/portainer
+docker run \
   -d \
   --restart=always \
   -p 8000:8000 \
@@ -12,9 +12,9 @@ sudo docker run \
   portainer/portainer-ce:latest
 
 #MariaDB can be installed easily
-sudo docker rm -f mariadb
-sudo rm -rf /data/urlshorterner/mariadb
-sudo docker run \
+docker rm -f mariadb
+rm -rf /data/urlshorterner/mariadb
+docker run \
   -d \
   --restart=always \
   --name mariadb \
@@ -27,8 +27,8 @@ sudo docker run \
   mariadb:10.6
 
 #phpmyadmin can be installed to manage mariadb
-sudo docker rm -f phpmyadmin
-sudo docker run \
+docker rm -f phpmyadmin
+docker run \
   -d \
   --link mariadb:db \
   --restart=always \
@@ -37,19 +37,19 @@ sudo docker run \
   phpmyadmin
 
 #We can build Java backend with this
-sudo docker rm -f url-shortener-backend-java-spring
-sudo docker build -t dungviettran89/url-shortener-backend-java-spring:latest .
-sudo docker run -d --link mariadb:db --name url-shortener-backend-java-spring dungviettran89/url-shortener-backend-java-spring:latest
-sudo docker logs -f url-shortener-backend-java-spring
+docker rm -f url-shortener-backend-java-spring
+docker build -t dungviettran89/url-shortener-backend-java-spring:latest .
+docker run -d --link mariadb:db --name url-shortener-backend-java-spring dungviettran89/url-shortener-backend-java-spring:latest
+docker logs -f url-shortener-backend-java-spring
 
 #We can build Node backend with this
-sudo docker rm -f url-shortener-backend-node-nestjs
-sudo docker build -t dungviettran89/url-shortener-backend-node-nestjs:latest .
-sudo docker run -d --link mariadb:db --name url-shortener-backend-node-nestjs dungviettran89/url-shortener-backend-node-nestjs:latest
-sudo docker logs -f url-shortener-backend-node-nestjs
+docker rm -f url-shortener-backend-node-nestjs
+docker build -t dungviettran89/url-shortener-backend-node-nestjs:latest .
+docker run -d --link mariadb:db --name url-shortener-backend-node-nestjs dungviettran89/url-shortener-backend-node-nestjs:latest
+docker logs -f url-shortener-backend-node-nestjs
 
 #We can build Node front end with this
-sudo docker rm -f url-shortener-frontend-react
-sudo docker build -t dungviettran89/url-shortener-frontend-react:latest .
-sudo docker run -d --link url-shortener-backend-java-spring:backend --name url-shortener-frontend-react -p 80:80  dungviettran89/url-shortener-frontend-react:latest
-sudo docker logs -f url-shortener-frontend-react
+docker rm -f url-shortener-frontend-react
+docker build -t dungviettran89/url-shortener-frontend-react:latest .
+docker run -d --link url-shortener-backend-java-spring:backend --name url-shortener-frontend-react -p 80:80  dungviettran89/url-shortener-frontend-react:latest
+docker logs -f url-shortener-frontend-react
