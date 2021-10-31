@@ -9,12 +9,14 @@ services:
       MYSQL_USER: "urlshortener"
       MYSQL_PASSWORD: "${MYSQL_PASSWORD:-urlshortener}"
   backend:
+    build: ../../services/url-shortener-backend-java-spring
     image: "dungviettran89/url-shortener-backend-java-spring:latest"
     restart: unless-stopped
     environment:
       DB_HOST: "mariadb"
       DB_PASS: "${MYSQL_PASSWORD:-urlshortener}"
   frontend:
+    build: ../../services/url-shortener-frontend-react
     image: "dungviettran89/url-shortener-frontend-react:latest"
     restart: unless-stopped
     ports:
