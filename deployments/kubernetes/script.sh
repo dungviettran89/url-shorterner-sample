@@ -12,6 +12,9 @@ kubectl create -n url-shortener deployment frontend \
   --image=dungviettran89/url-shortener-frontend-react:latest \
   --dry-run=client -o yaml \
   > frontend.yaml
+echo "---" >> frontend.yaml
+kubectl expose -n url-shortener deployment/frontend --port=80 --target-port=80  --dry-run=client -o yaml \
+  >> frontend.yaml
 
 kubectl apply -n url-shortener --force -f frontend.yaml
 
