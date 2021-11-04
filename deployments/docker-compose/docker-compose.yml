@@ -4,10 +4,10 @@ services:
     image: "mariadb:10.6"
     restart: unless-stopped
     environment:
-      MARIADB_RANDOM_ROOT_PASSWORD: "yes"
-      MYSQL_DATABASE: "urlshortener"
-      MYSQL_USER: "urlshortener"
-      MYSQL_PASSWORD: "${MYSQL_PASSWORD:-urlshortener}"
+      MARIADB_RANDOM_ROOT_PASSWORD=yes
+      MYSQL_DATABASE=urlshortener
+      MYSQL_USER=urlshortener
+      MYSQL_PASSWORD=urlshortener
   backend:
     build: ../../services/url-shortener-backend-java-spring
     image: "dungviettran89/url-shortener-backend-java-spring:latest"

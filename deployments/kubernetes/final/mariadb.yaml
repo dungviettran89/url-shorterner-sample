@@ -4,16 +4,16 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
     field.cattle.io/creatorId: user-pdn67
-  creationTimestamp: "2021-10-31T14:23:00Z"
+  creationTimestamp: "2021-11-01T07:42:39Z"
   generation: 1
   labels:
     cattle.io/creator: norman
     workload.user.cattle.io/workloadselector: deployment-url-shortener-mariadb
   name: mariadb
   namespace: url-shortener
-  resourceVersion: "11215535"
+  resourceVersion: "11267399"
   selfLink: /apis/apps/v1/namespaces/url-shortener/deployments/mariadb
-  uid: d8d602cf-9cb9-4f05-880f-3326cc181637
+  uid: 954b996e-69e3-45f6-a333-cd8f0ce64ded
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -29,7 +29,7 @@ spec:
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: "2021-10-31T14:23:00Z"
+        cattle.io/timestamp: "2021-11-01T07:42:39Z"
         field.cattle.io/ports: '[[{"containerPort":3306,"dnsName":"mariadb","hostPort":0,"kind":"ClusterIP","name":"3306tcp02","protocol":"TCP","sourcePort":0}]]'
       creationTimestamp: null
       labels:
@@ -71,15 +71,15 @@ spec:
 status:
   availableReplicas: 1
   conditions:
-  - lastTransitionTime: "2021-10-31T14:23:18Z"
-    lastUpdateTime: "2021-10-31T14:23:18Z"
+  - lastTransitionTime: "2021-11-01T07:42:41Z"
+    lastUpdateTime: "2021-11-01T07:42:41Z"
     message: Deployment has minimum availability.
     reason: MinimumReplicasAvailable
     status: "True"
     type: Available
-  - lastTransitionTime: "2021-10-31T14:23:00Z"
-    lastUpdateTime: "2021-10-31T14:23:18Z"
-    message: ReplicaSet "mariadb-7f7fdf6f94" has successfully progressed.
+  - lastTransitionTime: "2021-11-01T07:42:39Z"
+    lastUpdateTime: "2021-11-01T07:42:41Z"
+    message: ReplicaSet "mariadb-549ccfc5f7" has successfully progressed.
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing

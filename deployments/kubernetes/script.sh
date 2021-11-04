@@ -10,14 +10,17 @@ kubectl get -n url-shortener deployment/backend service/backend -o yaml |\
 
 kubectl create -n url-shortener deployment frontend \
   --image=dungviettran89/url-shortener-frontend-react:latest \
-  --dry-run=client -o yaml \
-  > frontend.yaml
-echo "---" >> frontend.yaml
-kubectl expose -n url-shortener deployment/frontend --port=80 --target-port=80  --dry-run=client -o yaml \
-  >> frontend.yaml
+  --replicas=2 \
+  --dry-run=client -o yaml > frontend.yaml
+kubectl apply -n url-shortener --force -f frontend.yaml
 
+echo "---" >> frontend.yaml
+kubectl expose -n url-shortener deployment/frontend --port=80 --target-port=80 \
+  --dry-run=client -o yaml >> frontend.yaml
 kubectl apply -n url-shortener --force -f frontend.yaml
 
 kubectl -n url-shortener get deployment/mariadb -o yaml | tee final/mariadb.yaml
 kubectl -n url-shortener get deployment/backend service/backend -o yaml | tee final/backend.yaml
-kubectl -n url-shortener get deployment/frontend service/frontend ingress/frontend -o yaml | tee final/backend.yaml
+kubectl -n url-shortener get deployment/frontend service/frontend ingress/frontend -o yaml | tee final/frontend.yaml
+
+kubectl -n url-shortener apply --force -f final/
